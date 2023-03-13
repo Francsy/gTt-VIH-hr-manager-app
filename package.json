@@ -1,0 +1,19 @@
+{
+  "name": "gtt-vih-hr-manager-app",
+  "version": "1.0.0",
+  "description": "A human resources web app for gtt vih",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Francsy/gTt-VIH-hr-manager-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Francsy/gTt-VIH-hr-manager-app/issues"
+  },
+  "homepage": "https://github.com/Francsy/gTt-VIH-hr-manager-app#readme"
+}
