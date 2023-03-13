@@ -4,7 +4,14 @@
   "description": "A human resources web app for gtt vih",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "clientinstall": "npm install --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "deploy": "concurrently \"npm run server\" \"npm run client\"",
+    "render-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "repository": {
     "type": "git",
@@ -15,5 +22,16 @@
   "bugs": {
     "url": "https://github.com/Francsy/gTt-VIH-hr-manager-app/issues"
   },
-  "homepage": "https://github.com/Francsy/gTt-VIH-hr-manager-app#readme"
+  "homepage": "https://github.com/Francsy/gTt-VIH-hr-manager-app#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "sequelize": "^6.29.3"
+  },
+  "devDependencies": {
+    "concurrently": "^7.6.0",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.21"
+  }
 }
