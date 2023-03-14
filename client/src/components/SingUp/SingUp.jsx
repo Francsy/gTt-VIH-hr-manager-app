@@ -2,7 +2,7 @@ import React from "react";
 
 import { useState } from "react";
 
-function Login() {
+function SignUp() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
@@ -13,7 +13,7 @@ function Login() {
 
   return (
     <>
-    <h1>LOGIN</h1>
+    <h1>SING UP</h1>
     
     <form onSubmit={handleSubmit}>
       <label>
@@ -24,10 +24,14 @@ function Login() {
         Contraseña:
         <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
       </label>
-      <button type="submit">Iniciar sesión</button>
+      <label>
+        Confirmar Contraseña:
+        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+      </label>
+      <button type="submit">Registrate</button>
     </form>
     </>
   );
 }
 
-export default Login
+export default SignUp

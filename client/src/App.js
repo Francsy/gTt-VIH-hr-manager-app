@@ -1,14 +1,34 @@
-import './App.css';
-// import Main from './components/Main/Main'
-import Login from './components/Login/Login'
-import Navbar from './components/Navbar/Navbar';
+import React from 'react';
+import { BrowserRouter as Router, Link, Route, Routes } from 'react-router-dom';
+import SignUp from './components/SingUp/SingUp';
+import Login from './components/Login/Login';
+import Home from './components/Home/Home'
 
 function App() {
   return (
-    <div className="App">
-      <Navbar/>
-      <Login/>
-    </div>
+    <Router>
+      <div className="App">
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/signup">SignUp</Link>
+            </li>
+            <li>
+              <Link to="/login">Login</Link>
+            </li>
+          </ul>
+        </nav>
+
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/login" element={<Login />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
