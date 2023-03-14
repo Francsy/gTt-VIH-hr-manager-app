@@ -21,6 +21,10 @@ const Employees = db.define("Employees", {
         type: DataTypes.STRING(40),
         unique: true
     },
+    password: {
+        field: 'password',
+        type: DataTypes.STRING(40)
+    },
 },
     {
         db,
