@@ -23,7 +23,7 @@ const Employees = db.define("Employees", {
     },
     password: {
         field: 'password',
-        type: DataTypes.STRING(40)
+        type: DataTypes.STRING(60)
     },
     role: {
         field: 'role',
@@ -38,6 +38,13 @@ const Employees = db.define("Employees", {
     }
 );
 
-Employees.sync();
+// Employees.sync()
+Employees.sync({ force: true })
+  .then(() => {
+    console.log('Employees model synchronized successfully');
+  })
+  .catch((error) => {
+    console.error('Error synchronizing Employees model:', error);
+  });
 
 module.exports = Employees
