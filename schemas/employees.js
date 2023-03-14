@@ -2,8 +2,8 @@ const { db } = require('../utils/sqlConnection')
 const { DataTypes } = require('sequelize');
 
 const Employees = db.define("Employees", {
-    idAuthor: {
-        field: 'id_author',
+    idEmployee: {
+        field: 'id_employee',
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV1,
         primaryKey: true,
@@ -25,6 +25,10 @@ const Employees = db.define("Employees", {
         field: 'password',
         type: DataTypes.STRING(40)
     },
+    role: {
+        field: 'role',
+        type: DataTypes.STRING(35)
+    }
 },
     {
         db,
