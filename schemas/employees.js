@@ -38,13 +38,13 @@ const Employees = db.define("Employees", {
     }
 );
 
-// Employees.sync()
-Employees.sync({ force: true })
-  .then(() => {
-    console.log('Employees model synchronized successfully');
-  })
-  .catch((error) => {
-    console.error('Error synchronizing Employees model:', error);
-  });
+Employees.sync()
+// Employees.sync({ force: true })
+//   .then(() => {
+//     console.log('Employees model synchronized successfully');
+//   })
+//   .catch((error) => {
+//     console.error('Error synchronizing Employees model:', error);
+//   });
 
 module.exports = Employees
