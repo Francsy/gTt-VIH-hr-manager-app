@@ -46,7 +46,7 @@ userProtector.use(async (req, res, next) => {
             where: { email: decoded.email }
         })
         
-        if (!userData || userData.rol !== "empleado") return res.json({ message: 'Invalid token' }); // Token verification failed
+        if (!userData) return res.json({ message: 'Invalid token' }); // Token verification failed
 
         const userForToken = {
             email: decoded.email,
