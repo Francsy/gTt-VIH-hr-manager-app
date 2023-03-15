@@ -32,22 +32,23 @@ const authLogin = async (req, res) => {
     const { logEmail, logPassword } = req.body;
     try {
         let userData = await Usuarios.findOne({
-            attributes: ['email', 'role', 'password'],
+            attributes: ['email', 'rol', 'contrasenia'],
             where: { email: logEmail }
         })
 
-        const { email, role, password } = userData;
-        const match = await bcrypt.compare(logPassword, password);
+        const { email, rol, contrasenia } = userData;
+        const match = await bcrypt.compare(logPassword, contrasenia);
         if (match) {
             const userToken = {
                 email,
+                rol
             }
             const token = jwt.sign(userToken, jwt_key, { expiresIn: '20m' });
             res.cookie('access-token', token, {
                 httpOnly: true
                 // secure: process.env.NODE_ENV === "production"
             })
-            role === 'user' ? res.status(201).json({ message: 'userAccess' }) : res.status(201).json({ message: 'adminAccess' })
+            role === 'empleado' ? res.status(201).json({ message: 'empleadoAccess' }) : res.status(201).json({ message: 'adminAccess' })
             console.log('Todo okay')
         } else {
             res.status(400).json({ message: 'wrongCredentials' });
