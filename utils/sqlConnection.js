@@ -2,7 +2,33 @@ const { Sequelize } = require('sequelize');
 require('dotenv').config()
 
 
-const db = new Sequelize(`postgres://${process.env.SQL_USER}:${process.env.SQL_PASSWORD}@${process.env.SQL_HOST}/${process.env.SQL_USER}`);
+/*
+CONEXIÓN: ELEPHANT;
+const db = new Sequelize(`postgres://${process.env.SQL_ELEPHANT_USER}:${process.env.SQL_ELEPHANT_PASSWORD}@${process.env.SQL_ELEPHANT_HOST}/${process.env.SQL_ELEPHANT_USER}`);
+ */
+
+const db = new Sequelize(`${process.env.SQL_DATABASE_NAME}`, `${process.env.SQL_USER}`, `${process.env.SQL_PASSWORD}`, {
+    host: `${process.env.SQL_HOST}`,
+    port: 5432, // El puerto predeterminado de PostgreSQL es 5432, cámbielo si es necesario
+    dialect: 'postgres',
+    dialectOptions: {
+        ssl: {
+            require: true,
+            rejectUnauthorized: false
+        }
+    },
+    pool: {
+        max: 5,
+        min: 0,
+        idle: 10000,
+        acquire: 30000
+    }
+});
+
+
+
+
+
 
 const connectSQL = async () => {
     try {

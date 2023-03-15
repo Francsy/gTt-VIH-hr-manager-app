@@ -20,7 +20,6 @@ const createNewEmployee = async (req, res) => {
     }
 }
 
-
 const authLogin = async (req, res) => {
     const { logEmail, logPassword } = req.body;
     try {
@@ -48,7 +47,6 @@ const authLogin = async (req, res) => {
     } catch (error) {
         console.log(error)
         res.status(400).json({ message: 'DB failed', error });
-
     }
 }
 
