@@ -11,7 +11,7 @@ const Usuarios = db.define('Usuarios', {
     },
     contrasenia: {
         field: 'contrasenia',
-        type: DataTypes.STRING(45),
+        type: DataTypes.STRING(60),
         allowNull: false
     },
     nombre: {
@@ -75,58 +75,22 @@ const Usuarios = db.define('Usuarios', {
         db,
         modelName: 'Usuarios',
         tableName: 'usuarios',
-        timestamps: 'false',
+        timestamps: false,
     }
 );
 
 
-/* const Employees = db.define("Employees", {
-    idEmployee: {
-        field: 'id_employee',
-        type: DataTypes.UUID,
-        defaultValue: DataTypes.UUIDV1,
-        primaryKey: true,
-    },
-    name: {
-        field: 'name',
-        type: DataTypes.STRING(35),
-    },
-    surname: {
-        field: 'surname',
-        type: DataTypes.STRING(35),
-    },
-    email: {
-        field: 'email',
-        type: DataTypes.STRING(40),
-        unique: true
-    },
-    password: {
-        field: 'password',
-        type: DataTypes.STRING(60)
-    },
-    role: {
-        field: 'role',
-        type: DataTypes.STRING(35)
-    }
-},
-    {
-        db,
-        modelName: 'Employees',
-        tableName: 'employees',
-        timestamps: 'true',
-    }
-); */
 
 Usuarios.sync()
 
 /* 
 
-Employees.sync({ force: true })
+Usuarios.sync({ force: true })
   .then(() => {
-    console.log('Employees model synchronized successfully');
+    console.log('Usuarios model synchronized successfully');
   })
   .catch((error) => {
-    console.error('Error synchronizing Employees model:', error);
+    console.error('Error synchronizing Usuarios model:', error);
   });
 
 */

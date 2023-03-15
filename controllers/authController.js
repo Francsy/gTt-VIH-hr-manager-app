@@ -6,17 +6,25 @@ const jwt_key = process.env.JWT_KEY;
 
 const createNewEmployee = async (req, res) => {
     try {
-        const { name, surname, email, password, passwordCheck } = req.body;
+        const { nombre, apellido1, email, password, passwordCheck, apellido2, telefono } = req.body;
         if (password === passwordCheck) {
             const hashPassword = await bcrypt.hash(password, saltRounds);
-            let newEmployee = await Usuarios.create({ name, surname, email, password: hashPassword, role: 'user' });
-            res.status(201).json({ message: 'Employee created', employee: newEmployee });
+            let newEmployee = await Usuarios.create({ 
+                nombre,
+                apellido1,
+                email, 
+                contrasenia: hashPassword,
+                rol: 'empleado',
+                apellido2: apellido2 || null,
+                telefono: telefono || null
+            });
+            res.status(201).json({ message: 'Empleado creado', employee: newEmployee });
         } else {
-            throw new Error('Passwords do not match');
+            throw new Error('La contraseña no coinciden');
         }
     } catch (error) {
         console.error(error);
-        res.status(500).json({ message: 'Error creating user' });
+        res.status(500).json({ message: 'Error al crear empleado' });
     }
 }
 
