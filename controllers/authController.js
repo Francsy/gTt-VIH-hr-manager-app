@@ -1,4 +1,4 @@
-const Employees = require('../schemas/employees')
+const Usuarios = require('../schemas/usuarios')
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 const jwt = require('jsonwebtoken')
@@ -9,7 +9,7 @@ const createNewEmployee = async (req, res) => {
         const { name, surname, email, password, passwordCheck } = req.body;
         if (password === passwordCheck) {
             const hashPassword = await bcrypt.hash(password, saltRounds);
-            let newEmployee = await Employees.create({ name, surname, email, password: hashPassword, role: 'user' });
+            let newEmployee = await Usuarios.create({ name, surname, email, password: hashPassword, role: 'user' });
             res.status(201).json({ message: 'Employee created', employee: newEmployee });
         } else {
             throw new Error('Passwords do not match');
@@ -23,7 +23,7 @@ const createNewEmployee = async (req, res) => {
 const authLogin = async (req, res) => {
     const { logEmail, logPassword } = req.body;
     try {
-        let userData = await Employees.findOne({
+        let userData = await Usuarios.findOne({
             attributes: ['email', 'role', 'password'],
             where: { email: logEmail }
         })
