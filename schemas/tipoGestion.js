@@ -15,7 +15,7 @@ const TipoGestion = db.define('tipo_gestion', {
     db,
     modelName: 'TipoGestion',
     tableName: 'tipo_gestion',
-    timestamps: 'false',
+    timestamps: false,
 });
 
 TipoGestion.sync();

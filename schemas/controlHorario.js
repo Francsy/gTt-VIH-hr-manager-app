@@ -36,7 +36,7 @@ const ControlHorario = db.define('control_horario', {
     db,
     modelName: 'ControlHorario',
     tableName: 'control_horario',
-    timestamps: 'false',
+    timestamps: false,
 }
   );
 

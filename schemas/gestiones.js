@@ -61,7 +61,7 @@ const Gestiones = db.define('gestiones', {
     db,
     modelName: 'Gestiones',
     tableName: 'gestiones',
-    timestamps: 'false',
+    timestamps: false,
 });
 
 Gestiones.belongsTo(Usuarios, { foreignKey: 'usuario_id', targetKey: 'usuario_id' });

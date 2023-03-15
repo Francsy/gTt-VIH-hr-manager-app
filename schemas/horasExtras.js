@@ -51,7 +51,7 @@ const HorasExtra = db.define('horas_extra', {
     db,
     modelName: 'HorasExtras',
     tableName: 'horas_extras',
-    timestamps: 'false',
+    timestamps: false,
 }
 );
 

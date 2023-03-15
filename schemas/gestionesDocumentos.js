@@ -23,7 +23,7 @@ const GestionesDocumentos = db.define('gestiones_documentos', {
     db,
     modelName: 'GestionesDocumentos',
     tableName: 'gestiones_documentos',
-    timestamps: 'false',
+    timestamps: false,
 });
 
 GestionesDocumentos.sync();
