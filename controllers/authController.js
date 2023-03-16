@@ -48,6 +48,7 @@ const authLogin = async (req, res) => {
                 httpOnly: true
                 // secure: process.env.NODE_ENV === "production"
             })
+            // .send() ??
             role === 'empleado' ? res.status(201).json({ message: 'empleadoAccess' }) : res.status(201).json({ message: 'adminAccess' })
             console.log('Todo okay')
         } else {
