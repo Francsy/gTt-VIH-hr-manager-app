@@ -13,7 +13,7 @@ const AdminAccesosCard = () => {
     Accesos Rápidos
     </h1>
   <div>
-  <Link to="/admin">
+  <Link to="/admin/personal">
     <img src={Users} alt="" />
     <p>Personal</p>
   </Link>

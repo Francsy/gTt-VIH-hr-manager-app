@@ -2,6 +2,7 @@ import React from "react";
 import { Route, Routes } from 'react-router-dom';
 import AdminDashboard from "./AdminDashboard";
 import AdminSideNavBar from "./AdminSideNavBar";
+import AdminGestionPersonal from "./AdminGestionPersonal"
 
 const AdminMain = () => {
   return (
@@ -9,7 +10,7 @@ const AdminMain = () => {
       <AdminSideNavBar/>
       <Routes>
         <Route path="/" element={<AdminDashboard />} />
-        {/* EJEMPLO DE RUTA ANIDADA QUE NO SEA LA BASE => <Route path="dashboard" element={<AdminDashboard />} /> */}
+        <Route path="personal/*" element={<AdminGestionPersonal />} />
       </Routes>
     </main>
   );

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 const AdminSideNavBar = () => {
   return <nav>
     <Link to="/admin">&nbsp;Inicio</Link>
-    <Link to="/admin">&nbsp;Personal</Link>
+    <Link to="/admin/personal">&nbsp;Personal</Link>
     <Link to="/admin">&nbsp;Solicitudes</Link>
     <Link to="/admin">&nbsp;Gestiones</Link>
     <Link to="/admin">&nbsp;Agenda</Link>
