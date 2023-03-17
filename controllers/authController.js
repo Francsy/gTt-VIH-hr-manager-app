@@ -49,7 +49,7 @@ const authLogin = async (req, res) => {
                 // secure: process.env.NODE_ENV === "production"
             })
             // .send() ??
-            role === 'empleado' ? res.status(201).json({ message: 'empleadoAccess' }) : res.status(201).json({ message: 'adminAccess' })
+            rol === 'empleado' ? res.status(201).json({ message: 'empleadoAccess' }) : res.status(201).json({ message: 'adminAccess' })
             console.log('Todo okay')
         } else {
             res.status(400).json({ message: 'wrongCredentials' });
