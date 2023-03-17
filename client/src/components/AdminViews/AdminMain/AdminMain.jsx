@@ -6,7 +6,6 @@ const AdminMain = () => {
   return (
     <main>
       <Routes>
-        <Route path="/" element={<h1>Welcome to Admin Dashboard!</h1>} />
         <Route path="dashboard" element={<AdminDashboard />} />
       </Routes>
     </main>
