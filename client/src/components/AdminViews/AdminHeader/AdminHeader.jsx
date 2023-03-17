@@ -1,7 +1,7 @@
 import React from "react";
-
+import AdminNavBar from "./AdminNavBar"
 const AdminHeader = () => {
-  return <div>AdminHeader</div>;
+  return <header><AdminNavBar /></header>;
 };
 
 export default AdminHeader;

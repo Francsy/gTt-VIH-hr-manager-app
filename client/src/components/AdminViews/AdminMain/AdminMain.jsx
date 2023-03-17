@@ -6,7 +6,9 @@ const AdminMain = () => {
   return (
     <main>
       <Routes>
-        <Route path="dashboard" element={<AdminDashboard />} />
+        <Route path="/" element={<AdminDashboard />} />
+        {/* EJEMPLO DE RUTA ANIDADA QUE NO SEA LA BASE => <Route path="dashboard" element={<AdminDashboard />} /> */}
+
       </Routes>
     </main>
   );

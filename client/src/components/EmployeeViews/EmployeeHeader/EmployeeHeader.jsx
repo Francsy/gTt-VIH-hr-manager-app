@@ -1,7 +1,7 @@
 import React from "react";
-
+import EmployeeNavBar from "./EmployeeNavBar";
 const EmployeeHeader = () => {
-  return <div>EmployeeHeader</div>;
+  return <header><EmployeeNavBar /></header>;
 };
 
 export default EmployeeHeader;
