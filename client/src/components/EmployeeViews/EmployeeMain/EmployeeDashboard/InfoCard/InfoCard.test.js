@@ -1,10 +1,10 @@
 import React from "react";
 import { shallow } from "enzyme";
-import EmployeeNavBar from "./EmployeeSideNavBar";
+import InfoCard from "./InfoCard";
 
-describe("EmployeeNavBar", () => {
+describe("InfoCard", () => {
   test("matches snapshot", () => {
-    const wrapper = shallow(<EmployeeNavBar />);
+    const wrapper = shallow(<InfoCard />);
     expect(wrapper).toMatchSnapshot();
   });
 });

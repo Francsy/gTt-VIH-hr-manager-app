@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom"
 
-const AdminNavBar = () => {
+const AdminSideNavBar = () => {
   return <nav>
     <Link to="/admin">&nbsp;Inicio</Link>
     <Link to="/admin">&nbsp;Personal</Link>
@@ -20,4 +20,4 @@ const AdminNavBar = () => {
   </nav>;
 };
 
-export default AdminNavBar;
+export default AdminSideNavBar;
