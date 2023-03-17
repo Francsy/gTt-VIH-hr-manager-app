@@ -1,9 +1,10 @@
 import React from "react";
+import {Link } from "react-router-dom"
 import IconEdit from "../../../../../assets/icon-edit.svg"
 
 const Personal = () => {
   return <div>
-    <input type="text" placeholder="Buscar"></input><button>+ Añadir trabajador</button>
+    <input type="text" placeholder="Buscar"></input><Link to="/admin/personal/nuevo-empleado"><button>+ Añadir trabajador</button></Link>
     <table>
     <table>
       <thead>

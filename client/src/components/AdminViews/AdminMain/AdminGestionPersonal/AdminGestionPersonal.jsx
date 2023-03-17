@@ -1,8 +1,10 @@
 import React from "react";
-import {Routes, Route, Link} from "react-router-dom"
+import {Routes, Route, Link} from "react-router-dom";
 import Personal from "./Personal";
 import GestionHoras from "./GestionHoras";
 import GestionAusencias from "./GestionAusencias";
+import AddNewEmployee from "./AddNewEmployee"
+import UpdateEmployee from "./UpdateEmployee"
 
 const AdminGestionPersonal = () => {
   return <div>
@@ -13,6 +15,8 @@ const AdminGestionPersonal = () => {
         <Route path="/" element={<Personal />} />
         <Route path="gestion-horas" element={<GestionHoras />} />
         <Route path="gestion-ausencias" element={<GestionAusencias />} />
+        <Route path="nuevo-empleado" element={<AddNewEmployee />} />
+        <Route path="actualizar-empleado/:id" element={<UpdateEmployee />} />
       </Routes>
   </div>;
 };
