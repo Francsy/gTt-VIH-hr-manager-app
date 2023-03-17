@@ -1,26 +1,26 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import SignUp from "./components/SingUp/SingUp";
-import Login from "./components/Login/Login";
-import Home from "./components/Home/Home";
-import Navbar from "./components/Navbar/Navbar";
-import Landing from "./components/Landing/Landing";
-import Footer from "./components/Footer/Footer";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+import AdminViews from './components/AdminViews'
+import EmployeeViews from './components/EmployeeViews'
+import Login from "./components/Login";
+import ViewsSelector from './components/ViewsSelector';
+import Footer from "./components/Footer";
+
 
 function App() {
   return (
-    <Router>
-      <div className="App">
-        <Navbar />
+    <div className="App">
+      <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/landing" element={<Landing />} />
+          <Route path="/" element={<Login />} />
+          <Route path="/user/*" element={<EmployeeViews />} />
+          <Route path="/admin/select" element={<ViewsSelector />} />
+          <Route path="/admin/*" element={<AdminViews />} />
         </Routes>
+      </BrowserRouter>
         <Footer />
-      </div>
-    </Router>
+    </div>
   );
 }
 

@@ -2,18 +2,25 @@ import React from "react";
 import '../../styles/componets/Login.css'
 import {CiUser} from 'react-icons/ci'
 
-import {CiUnlock} from 'react-icons/ci'
-
-
+import {CiUnlock} from 'react-icons/ci';
+import axios from 'axios';
 import { useState } from "react";
 
 function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    alert("Hola")
+    try {
+      const res = await axios.post('/login', {
+        logEmail: username,
+        logPassword: password
+      });
+      console.log(res.data);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (
