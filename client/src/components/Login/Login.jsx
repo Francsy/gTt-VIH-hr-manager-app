@@ -1,5 +1,4 @@
 import React from "react";
-import '../../styles/componets/Login.css'
 import { CiUser } from 'react-icons/ci'
 
 import { CiUnlock } from 'react-icons/ci';
@@ -38,7 +37,7 @@ function Login() {
 
   return redirection ? <Navigate to={redirection} /> :(
     <>
-      <div className="container">
+      <div className="login">
         <img src="https://pbs.twimg.com/profile_images/733194621589827584/0G4zcdJO_400x400.jpg" alt="Texto alternativo" />
         <form className="login-form" onSubmit={handleSubmit}>
           <label className="usuario_label">
