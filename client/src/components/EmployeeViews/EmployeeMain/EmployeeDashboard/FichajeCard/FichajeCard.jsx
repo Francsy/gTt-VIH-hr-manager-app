@@ -1,7 +1,7 @@
 import React from "react";
 
 const FichajeCard = () => {
-  return <div>
+  return <div className="fichaje-card">
     <div>
       <h1>Fichaje</h1>
       <p>Tienes () horas extra acumuladas.</p>
