@@ -18,8 +18,8 @@ app.use(cors())
 app.use(express.json());
 app.use(morgan('dev'))
 
-app.use('/admin', adminRoutes)
-app.use('/', authRoutes)
+app.use('/api/admin', adminRoutes)
+app.use('/api/', authRoutes)
 
 if (process.env.NODE_ENV === 'production') {
 

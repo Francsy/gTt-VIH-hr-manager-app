@@ -27,7 +27,7 @@ const AddNewEmployee = () => {
       console.log(fechaAlta)
       console.log(fechaBaja)
         try {
-          const res = await axios.post('/admin/createuser', {
+          const res = await axios.post('/api/admin/createuser', {
             nombre,
             apellido1,
             apellido2,
