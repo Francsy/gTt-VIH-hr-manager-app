@@ -1,0 +1,13 @@
+.main-layout {
+    display: flex;
+  
+    .employee-dashboard {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 100px;
+      gap: 70px;
+      padding: 30px;
+      width: calc(100% - 250px);
+    }
+  }
+  
