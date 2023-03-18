@@ -24,8 +24,7 @@ const AddNewEmployee = () => {
     
 
     if (nombre && apellido1 && email && categoria && jornada && fechaAlta ) {
-      console.log(fechaAlta)
-      console.log(fechaBaja)
+     
         try {
           const res = await axios.post('/api/admin/createuser', {
             nombre,
