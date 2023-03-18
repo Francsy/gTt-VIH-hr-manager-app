@@ -33,7 +33,36 @@ const getUserData = async (req, res) => {
     }
 }
 
-
+const updateEmployeeById = async (req, res) => {
+    try {
+      const { id } = req.params;
+      const { nombre, apellido1, apellido2, telefono, email, fechaAlta, fechaBaja, categoria, jornada } = req.body;
+      const employee = await Usuarios.findByPk(id);
+  
+      if (!employee) {
+        return res.status(404).json({ message: "Empleado no encontrado" });
+      }
+  
+      employee.nombre = nombre;
+      employee.apellido1 = apellido1;
+      employee.apellido2 = apellido2 || null;
+      employee.telefono = telefono || null;
+      employee.email = email;
+      employee.fecha_alta_contrato = fechaAlta;
+      employee.fecha_baja_contrato = fechaBaja || null;
+      employee.categoria = categoria;
+      employee.jornada_laboral = jornada;
+  
+      await employee.save();
+  
+      res.status(200).json({ message: "Empleado actualizado con éxito", employee });
+  
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: "Error al actualizar empleado" });
+    }
+  };
+  
 
 const createNewEmployee = async (req, res) => {
     try {
@@ -65,5 +94,6 @@ const createNewEmployee = async (req, res) => {
 module.exports = {
     createNewEmployee,
     getAllUsers,
-    getUserData
+    getUserData,
+    updateEmployeeById
 }
