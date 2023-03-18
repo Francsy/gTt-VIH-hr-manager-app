@@ -17,13 +17,15 @@ const AddNewEmployee = () => {
     const apellido2 = e.target.apellido2.value;
     const telefono = e.target.telefono.value;
     const email = e.target.email.value;
+    const fechaAlta = e.target.fechaAlta.value;
+    const fechaBaja = e.target.fechaBaja.value;
     const categoria = e.target.categoria.value;
     const jornada = e.target.jornada.value;
-    const password = e.target.password.value
-    const passwordCheck = e.target.passwordCheck.value
+    
 
-    if (nombre && apellido1 && email && categoria && jornada && password && passwordCheck) {
-      if (password === passwordCheck) {
+    if (nombre && apellido1 && email && categoria && jornada && fechaAlta ) {
+      console.log(fechaAlta)
+      console.log(fechaBaja)
         try {
           const res = await axios.post('/admin/createuser', {
             nombre,
@@ -31,21 +33,20 @@ const AddNewEmployee = () => {
             apellido2,
             telefono,
             email,
+            fechaAlta,
+            fechaBaja,
             categoria,
-            jornada,
-            password
+            jornada
           });
           setMessage(res.data.message)
           setTimeout(() => {
             navigate("/admin/personal")
-          }, 2000);
+          }, 2500);
           
         } catch (error) {
           setMessage("Este usuario ya existe") //A mejoorar desde el back para que la respuesta específica este mejorada
         }
-      } else {
-        setMessage('Las contraseñas deben ser iguales')
-      }
+    
     } else {
       setMessage('Faltan algunos campos requeridos')
       
@@ -69,22 +70,23 @@ const AddNewEmployee = () => {
       <input type="number" name="telefono" />
       <label htmlFor="email">Email*</label>
       <input type="email" name="email" />
-      <label htmlFor="jornada">Jornada*</label>
-      <select name="jornada">
-        <option value="">--Selecciona--</option>
-        <option value="full-time">Full-time</option>
-        <option value="part-time">Part-time</option>
-      </select>
+      <label htmlFor="fechaAlta">Fecha Alta*</label>
+      <input type="date" name="fechaAlta" />
+      <label htmlFor="fechaBaja">Fecha Baja</label>
+      <input type="date" name="fechaBaja" />
       <label htmlFor="categoria">Categoría*</label>
       <select name="categoria">
         <option value="">--Selecciona--</option>
-        <option value="admin">Admin</option>
-        <option value="empleado">Empleado</option>
+        <option value="Colaborador/a">Colaborador/a</option>
+        <option value="TES">TES</option>
+        <option value="Administrativo/a">Administrativo/a</option>
+        <option value="Informador/a legal">Informador/a legal</option>   
+        <option value="Coordinador/a">Coordinador/a</option>
+        <option value="Gerente">Gerente</option>
       </select>
-      <label htmlFor="password">Contraseña*</label>
-      <input type="password" name="password" />
-      <label htmlFor="passwordCheck">Repite la contraseña*</label>
-      <input type="password" name="passwordCheck" />
+      <label htmlFor="jornada">Jornada (nº de horas)*</label>
+      <input type="number" name="jornada" />
+      
       <input type="submit" value="Crear empleado" />
     </form>
     {message ? <p>{message}</p> : <></>}
