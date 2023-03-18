@@ -4,18 +4,19 @@ const saltRounds = 10;
 
 const createNewEmployee = async (req, res) => {
     try {
-        const { nombre, apellido1, email, password, apellido2, telefono } = req.body;
+        const { nombre, apellido1, email, password, apellido2, telefono, categoria, jornada } = req.body;
             const hashPassword = await bcrypt.hash(password, saltRounds);
             let newEmployee = await Usuarios.create({ 
                 nombre,
                 apellido1,
                 email, 
                 contrasenia: hashPassword,
-                rol: 'empleado',
+                rol: categoria,
+                jornada_laboral: jornada,
                 apellido2: apellido2 || null,
                 telefono: telefono || null
             });
-            res.status(201).json({ message: 'Empleado creado', employee: newEmployee });
+            res.status(201).json({ message: '¡Empleado creado con éxito!', employee: newEmployee });
        
     } catch (error) {
         console.error(error);
