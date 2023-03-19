@@ -11,14 +11,15 @@ const errorManager = require('./middlewares/errorManager');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-
+const adminRoutes = require('./routes/adminRoutes')
 const authRoutes = require('./routes/authRoutes')
 
 app.use(cors())
 app.use(express.json());
 app.use(morgan('dev'))
 
-app.use('/', authRoutes)
+app.use('/api/admin', adminRoutes)
+app.use('/api/', authRoutes)
 
 if (process.env.NODE_ENV === 'production') {
 

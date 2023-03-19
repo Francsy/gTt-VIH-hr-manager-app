@@ -52,7 +52,12 @@ const Usuarios = db.define('Usuarios', {
     },
     jornada_laboral: {
         field: 'jornada_laboral',
-        type: DataTypes.STRING(9),
+        type: DataTypes.INTEGER,
+        allowNull: true
+    },
+    categoria: {
+        field: 'categoria',
+        type: DataTypes.STRING(30),
         allowNull: true
     },
     rol: {
