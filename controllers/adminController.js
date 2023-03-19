@@ -1,6 +1,7 @@
 const Usuarios = require('../schemas/usuarios')
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
+const getIdAvailable = require('../utils/getIdAvailable')
 
 const getAllUsers = async (req, res) => {
     try {
@@ -69,7 +70,9 @@ const createNewEmployee = async (req, res) => {
         const { nombre, apellido1, apellido2, telefono, email, fechaAlta, fechaBaja, categoria, jornada } = req.body;
         const defaultPassword = "123456";
         const hashPassword = await bcrypt.hash(defaultPassword, saltRounds);
+        const usuario_id = await getIdAvailable();
         let newEmployee = await Usuarios.create({
+            usuario_id,
             nombre,
             apellido1,
             apellido2: apellido2 || null,
