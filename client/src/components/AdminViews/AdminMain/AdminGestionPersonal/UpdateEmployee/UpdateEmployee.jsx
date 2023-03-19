@@ -68,6 +68,17 @@ const UpdateEmployee = () => {
     }
   }
 
+  const removeEmployee = async () => {
+    const confirmed = window.confirm("¿Estás seguro que deseas eliminar al empleado?");
+  
+    if (confirmed) {
+      const res = await axios.delete(`/api/admin/removeuser/${id}`);
+      setMessage(res.data.message)
+      setTimeout(() => {
+        navigate("/admin/personal")
+      }, 2500);
+    }
+  };
 
 
 
@@ -103,8 +114,8 @@ const UpdateEmployee = () => {
       <input type="number" value={trabajador.jornada_laboral} name="jornada_laboral" onChange={handleInputChange} />
       
       <input type="submit" value="Guardar" />
-      <button>Eliminar</button>
     </form>
+      <button onClick={removeEmployee}>Eliminar</button>
     
     {message ? <p>{message}</p> : <></>}
   </div>;

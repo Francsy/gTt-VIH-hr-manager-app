@@ -90,10 +90,29 @@ const createNewEmployee = async (req, res) => {
     }
 }
 
+const removeEmployee = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const deletedUser = await Usuarios.destroy({
+          where: {
+            usuario_id: id
+          }
+        });
+        if (!deletedUser) {
+          return res.status(404).json({ message: 'Usuario no encontrado' });
+        }
+        res.status(200).json({ message: 'Usuario eliminado correctamente' });
+      } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Hubo un error al eliminar el usuario' });
+      }
+}
+
 
 module.exports = {
     createNewEmployee,
     getAllUsers,
     getUserData,
-    updateEmployeeById
+    updateEmployeeById,
+    removeEmployee
 }
