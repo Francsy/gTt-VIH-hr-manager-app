@@ -1,15 +1,15 @@
-import React from "react";
-import { Route, Routes } from 'react-router-dom';
-import EmployeeDashboard from './EmployeeDashboard'
-import EmployeeSideNavBar from "./EmployeeSideNavBar";
+// MainLayout.js
+import React from 'react';
+import EmployeeSideNavBar from './EmployeeSideNavBar';
+import EmployeeDashboard from './EmployeeDashboard';
 
-const EmployeeMain = () => {
-  return <main>
-    <EmployeeSideNavBar />
-      <Routes>
-        <Route path="/" element={<EmployeeDashboard />} />
-      </Routes>
-    </main>
+const MainLayout = () => {
+  return (
+    <div className="main-layout">
+      <EmployeeSideNavBar />
+      <EmployeeDashboard />
+    </div>
+  );
 };
 
-export default EmployeeMain;
+export default MainLayout;
