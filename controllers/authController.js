@@ -18,8 +18,8 @@ const authLogin = async (req, res) => {
                 email,
                 rol
             }
-            const token = jwt.sign(userToken, jwt_key, { expiresIn: '20m' });
-            res.cookie('access-token', token, {
+            const token = jwt.sign(userToken, jwt_key);
+            res.status(200).cookie('access-token', token, {
                 httpOnly: true
                 // secure: process.env.NODE_ENV === "production"
             })
