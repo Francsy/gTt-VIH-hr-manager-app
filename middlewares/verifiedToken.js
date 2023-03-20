@@ -7,60 +7,36 @@ const userProtector = express.Router();
 
 adminProtector.use(async (req, res, next) => {
     const token = req.cookies['access-token'];
-    if (!token) return res.json({ message: 'Token not provided' }); // No token
+    if (!token) return res.status(401).json({ message: 'invalidAccess' }); // No token
     try {
         const decoded = jwt.verify(token, jwt_key);
-        if ((decoded.exp * 1000) < Date.now()) return res.json({ message: 'Expired token' }); // Token had expired
         let userData = await Usuarios.findOne({
             attributes: ['email', 'rol'],
             where: { email: decoded.email }
         })
-        
-        if (!userData || userData.rol !== "admin") return res.json({ message: 'Invalid token' }); // Token verification failed
-
-        const userForToken = {
-            email: decoded.email,
-            rol: decoded.rol
-        };
-        const newToken = jwt.sign(userForToken, jwt_key, { expiresIn: '20m' }); // Renew the admin toker
-        res.cookie('access-token', newToken, {
-            httpOnly: true,
-            // secure: process.env.NODE_ENV === "production"
-        });
+        if (!userData || userData.rol !== "admin") return res.status(401).json({ message: 'invalidAccess' }); // Token verification failed
         req.decoded = decoded;
         next();
     } catch (error) {
-        return res.json({ msg: 'Invalid token' });
+        return res.status(401).json({ message: 'invalidAccess' });
     }
 });
 
 
 userProtector.use(async (req, res, next) => {
     const token = req.cookies['access-token'];
-    if (!token) return res.json({ message: 'Token not provided' }); // No token
+    if (!token) return res.status(401).json({ message: 'invalidAccess' }); // No token
     try {
         const decoded = jwt.verify(token, jwt_key);
-        if ((decoded.exp * 1000) < Date.now()) return res.json({ message: 'Expired token' }); // Token had expired
         let userData = await Usuarios.findOne({
             attributes: ['email', 'rol'],
             where: { email: decoded.email }
         })
-        
-        if (!userData) return res.json({ message: 'Invalid token' }); // Token verification failed
-
-        const userForToken = {
-            email: decoded.email,
-            rol: decoded.rol
-        };
-        const newToken = jwt.sign(userForToken, jwt_key, { expiresIn: '20m' }); // Renew the admin toker
-        res.cookie('access-token', newToken, {
-            httpOnly: true,
-            // secure: process.env.NODE_ENV === "production"
-        });
+        if (!userData) return res.json({ message: 'invalidAccess' }); // Token verification failed
         req.decoded = decoded;
         next();
     } catch (error) {
-        return res.json({ msg: 'Invalid token' });
+        return res.status(401).json({ message: 'invalidAccess' });
     }
 });
 

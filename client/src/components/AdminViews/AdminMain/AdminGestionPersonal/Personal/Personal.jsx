@@ -31,9 +31,9 @@ const Personal = () => {
         <BsSearch className="personal-icon"/>
         <div class="input-container">
           <input class="personal-search" type="text" placeholder="Buscar" />
-          <a href="/admin/personal/nuevo-empleado" class="personal-add-button">
+          <Link to="/admin/personal/nuevo-empleado" class="personal-add-button">
         <button>+ Añadir trabajador</button>
-      </a>
+      </Link>
         </div>
       </label>{" "}
       
@@ -58,14 +58,12 @@ const Personal = () => {
                 <td>{trabajador.jornada_laboral} hrs</td>
                 <td></td>
                 <td>
-                  <a
-                    href={`/admin/personal/actualizar-empleado/${trabajador.usuario_id}`}
+                  <Link
+                    to={`/admin/personal/actualizar-empleado/${trabajador.usuario_id}`}
                   >
                     <img src={IconEdit} alt="" />
-                  </a>
-                  <a>
-                    <button className="detalle-btn">Detalle</button>
-                  </a>
+                  </Link>
+                  
                 </td>
               </tr>
             ))}
