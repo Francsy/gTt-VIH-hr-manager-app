@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
+import { checkUserContext } from "../../../../../context/checkUserContext";
 
 const FichajeCard = () => {
+  const { userHours} = useContext(checkUserContext)
+
+
   return <div className="fichaje-card">
     <div>
       <h1>Fichaje</h1>
-      <p>Tienes () horas extra acumuladas.</p>
+      <p>Tienes ({userHours}) horas extra acumuladas.</p>
     </div>
     <div>
       <h2>0 h 2 m</h2>

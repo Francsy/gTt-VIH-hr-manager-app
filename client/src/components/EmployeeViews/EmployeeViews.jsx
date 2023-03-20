@@ -13,7 +13,7 @@ const Employee = () => {
 
   const dispatch = useDispatch()
   const [userName, setUserName ] = useState('')
-
+  const [userHours, setUserHours] = useState(0)
 
   const logout = async () => {
     await axios.get('/api/logout')
@@ -29,8 +29,9 @@ const Employee = () => {
       if (message === 'invalidAccess') {
         logout()
       } else if (message === 'isAuth') {
+        console.log(res.data)
         setUserName(res.data.nombre)
-        console.log(res.data.nombre)
+        setUserHours(res.data.horasExtra)
       }
     } catch (error) {
       logout()
@@ -43,7 +44,8 @@ const Employee = () => {
   }, [])
 
   const data = {
-    userName
+    userName,
+    userHours
   }  
 
 
