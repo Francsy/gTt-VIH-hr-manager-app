@@ -1,6 +1,13 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { unauthenticateAdmin } from '../../../../redux/slices/authSlice'
+
+
+
+
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
+
 
 import HomeIcon from "../../../../assets/home.svg";
 import InboxIcon from "../../../../assets/inbox.svg";
@@ -10,12 +17,22 @@ import CheckIcon from "../../../../assets/check.svg";
 import SmileIcon from "../../../../assets/smile.svg";
 import LogOutIcon from "../../../../assets/log-out.svg";
 
+
+
 const EmployeeSideNavBar = () => {
   const [isNavOpen, setIsNavOpen] = useState(true);
 
   const toggleNav = () => {
     setIsNavOpen(!isNavOpen);
   };
+
+  const dispatch = useDispatch()
+
+  const logout = () => {
+    dispatch(unauthenticateAdmin())
+    localStorage.removeItem('isAuth')
+    localStorage.removeItem('isAdmin')
+  }
 
   return (
     <>
@@ -51,10 +68,10 @@ const EmployeeSideNavBar = () => {
           <img src={SmileIcon} alt="" />
           &nbsp;Mi perfil
         </Link>
-        <Link to="/">
+        <button onClick={logout}>
           <img src={LogOutIcon} alt="" />
           &nbsp;Cerrar sesión
-        </Link>
+        </button>
       </nav>
     </>
   );

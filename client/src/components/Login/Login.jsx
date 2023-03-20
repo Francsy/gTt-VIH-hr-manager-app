@@ -1,30 +1,32 @@
-import React from "react";
+import React,{ useState } from "react";
 import { CiUser } from 'react-icons/ci'
 
 import { CiUnlock } from 'react-icons/ci';
 import axios from 'axios';
-import { useState } from "react";
-import { Navigate } from "react-router-dom"
+
+import { useDispatch } from 'react-redux'
+import { authenticateUser, authenticateAdmin } from '../../redux/slices/authSlice'
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [redirection, setRedirection] = useState('')
+const dispatch = useDispatch()
 
   async function handleSubmit(e) {
     e.preventDefault();
-
     try {
       const res = await axios.post('/api/login', {
         logEmail: email,
         logPassword: password
       });
       const message = res.data.message;
-      console.log(message)
       if (message === 'empleadoAccess') {
-        setRedirection('/user')
+        dispatch(authenticateUser());
+        localStorage.setItem('isAuth', 'true')
       } else if (message === 'adminAccess') {
-        setRedirection('/admin/select')
+        dispatch(authenticateAdmin());
+        localStorage.setItem('isAuth', 'true')
+        localStorage.setItem('isAdmin', 'true')
       } else {
         return alert('Tus credenciales no son correctas')
       }
@@ -35,7 +37,7 @@ function Login() {
     }
   }
 
-  return redirection ? <Navigate to={redirection} /> :(
+  return (
     <>
       <main className="login">
         <img src="https://pbs.twimg.com/profile_images/733194621589827584/0G4zcdJO_400x400.jpg" alt="Texto alternativo" />
