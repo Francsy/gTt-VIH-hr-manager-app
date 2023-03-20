@@ -25,7 +25,6 @@ const authLogin = async (req, res) => {
             })
             // .send() ??
             rol === 'empleado' ? res.status(201).json({ message: 'empleadoAccess' }) : res.status(201).json({ message: 'adminAccess' })
-            console.log('Todo okay')
         } else {
             res.status(400).json({ message: 'wrongCredentials' });
         }

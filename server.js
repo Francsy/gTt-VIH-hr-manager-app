@@ -1,9 +1,9 @@
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
+const cookieParser = require("cookie-parser");
 require('dotenv').config()
 require('./utils/sqlConnection')
-const cookieParser = require("cookie-parser");
 
 
 const morgan = require('morgan')
