@@ -28,14 +28,15 @@ const Personal = () => {
   return (
     <div class="personal-container">
       <label class="search-label">
-        <BsSearch />
+        <BsSearch className="personal-icon"/>
         <div class="input-container">
           <input class="personal-search" type="text" placeholder="Buscar" />
-        </div>
-      </label>{" "}
-      <a href="/admin/personal/nuevo-empleado" class="personal-add-button">
+          <a href="/admin/personal/nuevo-empleado" class="personal-add-button">
         <button>+ Añadir trabajador</button>
       </a>
+        </div>
+      </label>{" "}
+      
       {trabajadores.length > 0 ? (
         <table class="personal-table">
           <thead>
