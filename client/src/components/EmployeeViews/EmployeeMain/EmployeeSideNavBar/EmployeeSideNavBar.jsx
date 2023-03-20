@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { unauthenticateAdmin } from '../../../../redux/slices/authSlice'
@@ -36,19 +36,7 @@ const EmployeeSideNavBar = () => {
     localStorage.removeItem('isAdmin')
   }
 
-  const checkUserAuth = async () => {
-    try {
-      const res = await axios.get('api/user/check')
-      console.log(res.data.message)
-    } catch (error) {
-      logout()
-    }
-  }
-
-  useEffect(() => {
-    checkUserAuth()
-    // eslint-disable-next-line
-  }, [])
+  
 
   return (
     <>
