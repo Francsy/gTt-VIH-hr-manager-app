@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { unauthenticateAdmin } from '../../../../redux/slices/authSlice'
@@ -29,12 +29,28 @@ const EmployeeSideNavBar = () => {
 
   const dispatch = useDispatch()
 
+
+
   const logout = async () => {
     await axios.get('/api/logout')
     dispatch(unauthenticateAdmin())
     localStorage.removeItem('isAuth')
     localStorage.removeItem('isAdmin')
   }
+
+  const checkAuth = async () => {
+    try {
+      const res = await axios.get('api/user/check')
+      console.log(res.data.message)
+    } catch (error) {
+      logout()
+    }
+  }
+
+  useEffect(() => {
+    checkAuth()
+    // eslint-disable-next-line
+  }, [])
 
   return (
     <>

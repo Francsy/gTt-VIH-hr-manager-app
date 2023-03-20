@@ -7,7 +7,7 @@ const userProtector = express.Router();
 
 adminProtector.use(async (req, res, next) => {
     const token = req.cookies['access-token'];
-    if (!token) return res.json({ message: 'Token not provided' }); // No token
+    if (!token) return res.status(401).json({ message: 'Token not provided' }); // No token
     try {
         const decoded = jwt.verify(token, jwt_key);
         let userData = await Usuarios.findOne({
@@ -18,17 +18,16 @@ adminProtector.use(async (req, res, next) => {
         req.decoded = decoded;
         next();
     } catch (error) {
-        return res.json({ msg: 'Invalid token' });
+        return res.status(401).json({ message: 'Invalid token' });
     }
 });
 
 
 userProtector.use(async (req, res, next) => {
     const token = req.cookies['access-token'];
-    if (!token) return res.json({ message: 'Token not provided' }); // No token
+    if (!token) return res.status(401).json({ message: 'Token not provided' }); // No token
     try {
         const decoded = jwt.verify(token, jwt_key);
-        if ((decoded.exp * 1000) < Date.now()) return res.json({ message: 'Expired token' }); // Token had expired
         let userData = await Usuarios.findOne({
             attributes: ['email', 'rol'],
             where: { email: decoded.email }
@@ -37,7 +36,7 @@ userProtector.use(async (req, res, next) => {
         req.decoded = decoded;
         next();
     } catch (error) {
-        return res.json({ msg: 'Invalid token' });
+        return res.status(401).json({ message: 'Invalid token' });
     }
 });
 
