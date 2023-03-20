@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { unauthenticateAdmin } from '../../../../redux/slices/authSlice'
 
+import axios from 'axios';
 
 
 
@@ -28,7 +29,8 @@ const EmployeeSideNavBar = () => {
 
   const dispatch = useDispatch()
 
-  const logout = () => {
+  const logout = async () => {
+    await axios.get('/api/logout')
     dispatch(unauthenticateAdmin())
     localStorage.removeItem('isAuth')
     localStorage.removeItem('isAdmin')

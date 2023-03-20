@@ -34,7 +34,18 @@ const authLogin = async (req, res) => {
     }
 }
 
+const logout = async (req, res) => {
+    try {
+        res.status(200).clearCookie('access-token', {httpOnly: true}).json({message: 'success'})
+    } catch (error) {
+        res.status(400).json({
+            message: error.message
+        })
+    }
+}
+
 
 module.exports = {
-    authLogin
+    authLogin,
+    logout
 }

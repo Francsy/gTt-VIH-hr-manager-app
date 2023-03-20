@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom"
 import { useDispatch } from "react-redux";
-import { unauthenticateAdmin } from '../../../../redux/slices/authSlice'
+import { unauthenticateAdmin } from '../../../../redux/slices/authSlice';
+import axios from 'axios';
 
 
 
@@ -26,11 +27,17 @@ const AdminSideNavBar = () => {
 
   const dispatch = useDispatch()
 
-  const logout = () => {
-    dispatch(unauthenticateAdmin())
-    localStorage.removeItem('isAuth')
-    localStorage.removeItem('isAdmin')
+  const logout = async () => {
+    try {
 
+      await axios.get('/api/logout')
+      dispatch(unauthenticateAdmin())
+      localStorage.removeItem('isAuth')
+      localStorage.removeItem('isAdmin')
+
+    }catch (e){
+      console.log(e)
+    }
   }
 
 
