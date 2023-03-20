@@ -29,8 +29,6 @@ const EmployeeSideNavBar = () => {
 
   const dispatch = useDispatch()
 
-
-
   const logout = async () => {
     await axios.get('/api/logout')
     dispatch(unauthenticateAdmin())
@@ -38,7 +36,7 @@ const EmployeeSideNavBar = () => {
     localStorage.removeItem('isAdmin')
   }
 
-  const checkAuth = async () => {
+  const checkUserAuth = async () => {
     try {
       const res = await axios.get('api/user/check')
       console.log(res.data.message)
@@ -48,7 +46,7 @@ const EmployeeSideNavBar = () => {
   }
 
   useEffect(() => {
-    checkAuth()
+    checkUserAuth()
     // eslint-disable-next-line
   }, [])
 

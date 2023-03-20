@@ -4,7 +4,7 @@ const path = require('path');
 const cookieParser = require("cookie-parser");
 require('dotenv').config()
 require('./utils/sqlConnection')
-const { userProtector } = require('./middlewares/verifiedToken');
+const { userProtector, adminProtector } = require('./middlewares/verifiedToken');
 
 
 
@@ -24,7 +24,7 @@ app.use(cookieParser())
 app.use(express.json());
 app.use(morgan('dev'))
 
-app.use('/api/admin', adminRoutes)
+app.use('/api/admin', adminProtector, adminRoutes)
 app.use('/api/user', userProtector, userRoutes)
 app.use('/api', authRoutes)
 

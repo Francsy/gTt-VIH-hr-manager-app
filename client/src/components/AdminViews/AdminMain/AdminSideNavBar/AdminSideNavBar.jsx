@@ -1,8 +1,9 @@
-import React from "react";
+import React /* , { useEffect } */from "react";
 import { Link } from "react-router-dom"
 import { useDispatch } from "react-redux";
 import { unauthenticateAdmin } from '../../../../redux/slices/authSlice';
 import axios from 'axios';
+
 
 
 
@@ -40,6 +41,19 @@ const AdminSideNavBar = () => {
     }
   }
 
+  // const checkAdminAuth = async () => {
+  //   try {
+  //     const res = await axios.get('api/admin/check')
+  //     console.log(res.data.message)
+  //   } catch (error) {
+  //     logout()
+  //   }
+  // }
+
+  // useEffect(() => {
+  //   checkAdminAuth()
+  //   // eslint-disable-next-line
+  // }, [])
 
 
   return <nav>
