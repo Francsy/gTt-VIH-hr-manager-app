@@ -63,6 +63,9 @@ const Personal = () => {
                   >
                     <img src={IconEdit} alt="" />
                   </a>
+                  <a>
+                    <button className="detalle-btn">Detalle</button>
+                  </a>
                 </td>
               </tr>
             ))}
