@@ -1,24 +1,24 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { unauthenticateAdmin } from "../../../../redux/slices/authSlice";
 
+import { unauthenticateAdmin } from '../../../../redux/slices/authSlice';
+import axios from 'axios';
+
+import HomeIcon from "../../../../assets/home.svg"
+import UsersIcon from "../../../../assets/users.svg"
+import InboxIcon from "../../../../assets/inbox.svg"
+import LayersIcon from "../../../../assets/layers.svg"
+import CalendarIcon from "../../../../assets/calendar.svg"
+import CoinsIcon from "../../../../assets/coins.svg"
+import ClockIcon from "../../../../assets/clock.svg"
+import EditIcon from "../../../../assets/edit.svg"
+import ChecksIcon from "../../../../assets/checks.svg"
+import CheckIcon from "../../../../assets/check.svg"
+import PagesIcon from "../../../../assets/pages.svg"
+import SmileIcon from "../../../../assets/smile.svg"
+import LogOutIcon from "../../../../assets/log-out.svg"
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
-
-
-import HomeIcon from "../../../../assets/home.svg";
-import UsersIcon from "../../../../assets/users.svg";
-import InboxIcon from "../../../../assets/inbox.svg";
-import LayersIcon from "../../../../assets/layers.svg";
-import CalendarIcon from "../../../../assets/calendar.svg";
-import CoinsIcon from "../../../../assets/coins.svg";
-import ClockIcon from "../../../../assets/clock.svg";
-import EditIcon from "../../../../assets/edit.svg";
-import ChecksIcon from "../../../../assets/checks.svg";
-import CheckIcon from "../../../../assets/check.svg";
-import PagesIcon from "../../../../assets/pages.svg";
-import SmileIcon from "../../../../assets/smile.svg";
-import LogOutIcon from "../../../../assets/log-out.svg";
 
 const AdminSideNavBar = () => {
   const [isNavOpen, setIsNavOpen] = useState(true);
@@ -28,11 +28,18 @@ const AdminSideNavBar = () => {
   };
   const dispatch = useDispatch();
 
-  const logout = () => {
-    dispatch(unauthenticateAdmin());
-    localStorage.removeItem("isAuth");
-    localStorage.removeItem("isAdmin");
-  };
+   const logout = async () => {
+    try {
+
+      await axios.get('/api/logout')
+      dispatch(unauthenticateAdmin())
+      localStorage.removeItem('isAuth')
+      localStorage.removeItem('isAdmin')
+
+    }catch (e){
+      console.log(e)
+    }
+  }
 
   return (
     <>
@@ -99,6 +106,7 @@ const AdminSideNavBar = () => {
     </nav>
     </>
   );
+
 };
 
 export default AdminSideNavBar;

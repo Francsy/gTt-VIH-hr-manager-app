@@ -7,6 +7,7 @@ adminRouter.get('/edituser/:id', adminController.getUserData )
 adminRouter.post('/createuser', adminController.createNewEmployee );
 adminRouter.put('/edituser/:id', adminController.updateEmployeeById)
 adminRouter.delete('/removeuser/:id', adminController.removeEmployee)
+adminRouter.get('/check', adminController.adminAuthCheck)
 
 
 module.exports = adminRouter;

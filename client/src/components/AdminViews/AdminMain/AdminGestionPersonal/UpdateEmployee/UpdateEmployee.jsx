@@ -14,11 +14,10 @@ const UpdateEmployee = () => {
   useEffect(()=> {
     const getUser = async (id) => {
       const res = await axios.get(`/api/admin/edituser/${id}`)
-      console.log(res.data)
       setTrabajador(res.data)
-      console.log(trabajador)
     }
     getUser(id)
+    // eslint-disable-next-line
   } , [])
 
   const handleInputChange = (e) => {

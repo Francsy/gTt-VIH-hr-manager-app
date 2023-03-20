@@ -25,7 +25,6 @@ const authLogin = async (req, res) => {
             })
             // .send() ??
             rol === 'empleado' ? res.status(201).json({ message: 'empleadoAccess' }) : res.status(201).json({ message: 'adminAccess' })
-            console.log('Todo okay')
         } else {
             res.status(400).json({ message: 'wrongCredentials' });
         }
@@ -35,7 +34,18 @@ const authLogin = async (req, res) => {
     }
 }
 
+const logout = async (req, res) => {
+    try {
+        res.status(200).clearCookie('access-token', {httpOnly: true}).json({message: 'success'})
+    } catch (error) {
+        res.status(400).json({
+            message: error.message
+        })
+    }
+}
+
 
 module.exports = {
-    authLogin
+    authLogin,
+    logout
 }
