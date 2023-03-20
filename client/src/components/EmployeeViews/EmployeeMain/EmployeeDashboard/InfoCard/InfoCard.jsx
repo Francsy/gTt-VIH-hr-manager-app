@@ -7,8 +7,8 @@ const InfoCard = () => {
   return <div className="info-card">
     <h1>Información de interés:</h1>
     <h2>Dispones de:</h2>
-    <p>X días de vacaciones</p>
-    <p>{Math.floor(userHours)} horas extras a consumir antes del: Xfecha</p>
+    <p>5 días de vacaciones</p>
+    <p>{Math.floor(userHours)} horas extras a consumir antes del: 17-10-2023</p>
   </div>;
 };
 

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import EmployeeHeader from './EmployeeHeader'
 import EmployeeMain from "./EmployeeMain";
 import { checkUserContext } from "../../context/checkUserContext";
@@ -12,7 +12,7 @@ const Employee = () => {
 
 
   const dispatch = useDispatch()
-  const [userName, setUserName ] = useState('')
+  const [userName, setUserName] = useState('')
   const [userHours, setUserHours] = useState(0)
 
   const logout = async () => {
@@ -29,12 +29,11 @@ const Employee = () => {
       if (message === 'invalidAccess') {
         logout()
       } else if (message === 'isAuth') {
-        console.log(res.data)
         setUserName(res.data.nombre)
         setUserHours(res.data.horasExtra)
       }
     } catch (error) {
-      logout()
+      console.log(error)
     }
   }
 
@@ -46,7 +45,7 @@ const Employee = () => {
   const data = {
     userName,
     userHours
-  }  
+  }
 
 
   return <div>
