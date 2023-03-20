@@ -1,17 +1,29 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { FiUserCheck, FiUser } from "react-icons/fi";
 
 const ViewsSelector = () => {
-
-  return <div>
-    <h1>Elige como quieres entrar:</h1>
-    <Link to="/user">
-      <button>Empleado</button>
-    </Link>
-    <Link to="/admin">
-      <button>Administrador</button>
-    </Link>
-  </div>;
+  return (
+    <div className="container">
+      <img
+        src="https://pbs.twimg.com/profile_images/733194621589827584/0G4zcdJO_400x400.jpg"
+        alt="Texto alternativo"
+        className="logo"
+      />
+      <div className="button-container">
+        <Link to="/admin" className="link">
+          <button className="btn-empleado">
+            <FiUser className="icon" /> <span>Administrador</span>
+          </button>
+        </Link>
+        <Link to="/user" className="link">
+          <button className="btn-admin">
+            <FiUserCheck className="icon-empleado" /> <span>Empleado</span>
+          </button>
+        </Link>
+      </div>
+    </div>
+  );
 };
 
 export default ViewsSelector;
