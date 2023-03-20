@@ -1,0 +1,33 @@
+.header-admin {
+  display: flex;
+  justify-content: flex-end;
+  height: 70px;
+  margin-bottom: -90px;
+  background-color: #D26538
+  ;
+  padding: 10px 10px;
+
+  img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    // border: 1px solid #B6B6B6;
+    margin-right: 30px;
+  }
+  button {
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    background-color: #ef966f;
+    border-radius: 30px;
+    padding: 20px;
+    margin-right: 40px;
+  }
+  
+}
+  
+  
+ 
+  

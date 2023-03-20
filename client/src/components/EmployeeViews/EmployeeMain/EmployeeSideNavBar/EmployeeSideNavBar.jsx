@@ -68,7 +68,7 @@ const EmployeeSideNavBar = () => {
           <img src={SmileIcon} alt="" />
           &nbsp;Mi perfil
         </Link>
-        <button onClick={logout}>
+        <button onClick={logout} className="logout-button">
           <img src={LogOutIcon} alt="" />
           &nbsp;Cerrar sesión
         </button>

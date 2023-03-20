@@ -6,7 +6,7 @@ import AdminGestionPersonal from "./AdminGestionPersonal"
 
 const AdminMain = () => {
   return (
-    <main>
+    <main className="admin-main-layout">
       <AdminSideNavBar/>
       <Routes>
         <Route path="/" element={<AdminDashboard />} />

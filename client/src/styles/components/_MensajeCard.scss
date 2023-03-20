@@ -1,0 +1,29 @@
+.card {
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    max-width: 500px;
+    margin: 20px auto;
+  
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+  
+    .card-body {
+      display: flex;
+      align-items: center;
+  
+      img {
+        margin-right: 20px;
+        height: 50px;
+      }
+  
+      p {
+        font-size: 1.2rem;
+        margin: 0;
+      }
+    }
+  }
+  
