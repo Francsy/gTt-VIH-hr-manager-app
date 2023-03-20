@@ -36,34 +36,34 @@ const getUserData = async (req, res) => {
 
 const updateEmployeeById = async (req, res) => {
     try {
-      const { id } = req.params;
-      const { nombre, apellido1, apellido2, telefono, email, fechaAlta, fechaBaja, categoria, jornada } = req.body;
-      const employee = await Usuarios.findByPk(id);
-  
-      if (!employee) {
-        return res.status(404).json({ message: "Empleado no encontrado" });
-      }
-  
-      employee.nombre = nombre;
-      employee.apellido1 = apellido1;
-      employee.apellido2 = apellido2 || null;
-      employee.telefono = telefono || null;
-      employee.email = email;
-      employee.fecha_alta_contrato = fechaAlta;
-      employee.fecha_baja_contrato = fechaBaja || null;
-      employee.categoria = categoria;
-      employee.jornada_laboral = jornada;
-  
-      await employee.save();
-  
-      res.status(200).json({ message: "Empleado actualizado con éxito", employee });
-  
+        const { id } = req.params;
+        const { nombre, apellido1, apellido2, telefono, email, fechaAlta, fechaBaja, categoria, jornada } = req.body;
+        const employee = await Usuarios.findByPk(id);
+
+        if (!employee) {
+            return res.status(404).json({ message: "Empleado no encontrado" });
+        }
+
+        employee.nombre = nombre;
+        employee.apellido1 = apellido1;
+        employee.apellido2 = apellido2 || null;
+        employee.telefono = telefono || null;
+        employee.email = email;
+        employee.fecha_alta_contrato = fechaAlta;
+        employee.fecha_baja_contrato = fechaBaja || null;
+        employee.categoria = categoria;
+        employee.jornada_laboral = jornada;
+
+        await employee.save();
+
+        res.status(200).json({ message: "Empleado actualizado con éxito", employee });
+
     } catch (error) {
-      console.error(error);
-      res.status(500).json({ message: "Error al actualizar empleado" });
+        console.error(error);
+        res.status(500).json({ message: "Error al actualizar empleado" });
     }
-  };
-  
+};
+
 
 const createNewEmployee = async (req, res) => {
     try {
@@ -97,28 +97,35 @@ const removeEmployee = async (req, res) => {
     try {
         const { id } = req.params;
         const deletedUser = await Usuarios.destroy({
-          where: {
-            usuario_id: id
-          }
+            where: {
+                usuario_id: id
+            }
         });
         if (!deletedUser) {
-          return res.status(404).json({ message: 'Usuario no encontrado' });
+            return res.status(404).json({ message: 'Usuario no encontrado' });
         }
         res.status(200).json({ message: 'Usuario eliminado correctamente' });
-      } catch (error) {
+    } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Hubo un error al eliminar el usuario' });
-      }
+    }
 }
 
 const adminAuthCheck = async (req, res) => {
-  try {
-      return res.status(200).json({
-          message: "isAuth"
-      })
-  } catch (e) {
-      console.log(e.message)
-  }
+    const { email } = req.decoded
+    console.log(email)
+    try {
+        let userData = await Usuarios.findOne({
+            attributes: ['nombre'],
+            where: { email: email }
+        })
+        return res.status(200).json({
+            message: "isAuth",
+            nombre: userData.nombre
+        })
+    } catch (e) {
+        console.log(e.message)
+    }
 }
 
 
