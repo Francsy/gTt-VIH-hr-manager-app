@@ -6,6 +6,8 @@ const { userProtector } = require('../middlewares/verifiedToken')
 
 
 userRouter.get('/check', userProtector , userController.userAuthChecker)
-
+userRouter.post('/startclock', userProtector, userController.startWorkingDay )
+userRouter.get('/checkclock', userProtector, userController.checkWorkingDay )
+userRouter.post('/endclock', userProtector, userController.endWorkingDay )
 
 module.exports = userRouter;
