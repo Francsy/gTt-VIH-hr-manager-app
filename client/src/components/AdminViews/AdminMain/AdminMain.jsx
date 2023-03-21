@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import AdminDashboard from "./AdminDashboard";
 import AdminSideNavBar from "./AdminSideNavBar";
 import AdminGestionPersonal from "./AdminGestionPersonal"
+import AdminGestionSolicitudes from "./AdminGestionSolicitudes"
 
 const AdminMain = () => {
   return (
@@ -11,6 +12,7 @@ const AdminMain = () => {
       <Routes>
         <Route path="/" element={<AdminDashboard />} />
         <Route path="personal/*" element={<AdminGestionPersonal />} />
+        <Route path="solicitudes/*" element={<AdminGestionSolicitudes />} />
       </Routes>
     </main>
   );

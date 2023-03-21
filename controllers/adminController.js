@@ -2,6 +2,7 @@ const Usuarios = require('../schemas/usuarios')
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 const getIdAvailable = require('../utils/getIdAvailable')
+const Solicitudes = require('../schemas/solicitudes')
 
 const getAllUsers = async (req, res) => {
     try {
@@ -14,6 +15,7 @@ const getAllUsers = async (req, res) => {
         res.status(500).json({ message: 'Hubo un error al obtener los usuarios' });
     }
 };
+
 
 const getUserData = async (req, res) => {
     try {
@@ -130,11 +132,140 @@ const adminAuthCheck = async (req, res) => {
 }
 
 
+const getAllRequests = async (req, res) => {
+    try {
+        const requests = await Solicitudes.findAll({
+            attributes: ['fecha_solicitud', 'solicitud_id', 'duracion', 'motivo', 'aprobado', 'revisado'],
+            include: [{
+                model: Usuarios,
+                attributes: ['nombre', 'apellido1']
+            }]
+        });       
+        res.status(200).json(requests);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Hubo un error al obtener los usuarios' });
+    }
+};
+
+const getRequest = async (req, res) => {
+    const { id } = req.params
+    try {
+        const request = await Solicitudes.findOne({
+            where: {
+                solicitud_id: id
+            },
+            include: [{
+                model: Usuarios,
+                attributes: ['nombre', 'apellido1', 'apellido2', 'jornada_laboral', 'categoria']
+            }]
+        });       
+        res.status(200).json(request);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Hubo un error al obtener la solicitud' });
+    }
+}
+
+const allowRequest = async (req, res) => {
+    const { id } = req.params;
+    try {
+        const request = await Solicitudes.findByPk(id)
+        request.aprobado = true;
+        request.revisado = true;
+        await request.save();
+        if (request.motivo === 'Horas extra') {
+            const user = await Usuarios.findByPk(request.usuario_id)
+            const horasString = request.duracion;
+            const horas = parseFloat(horasString.replace('horas', '').trim());
+            user.horas_extra += horas
+            await user.save()
+        }
+        res.status(200).json({ message: "Solicitud aprobada con éxito", request });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Error al aprobar solicitud" });
+    }
+};
+
+const rejectRequest = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const request = await Solicitudes.findByPk(id);
+        request.aprobado = false;
+        request.revisado = true;
+        await request.save();
+        res.status(200).json({ message: "Solicitud aprobada con éxito", request });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Error al aprobar solicitud" });
+    }
+};
+
+const createRequest = async (req, res) => {
+    const { email,fechaInicio, fechaFin, motivo, comment } = req.body
+    try {
+        let user = await Usuarios.findOne({
+            attributes: ['usuario_id'],
+            where: { email }
+        })
+        if (!user) {
+            res.status(200).json({ message: "No hay ningún usuario con ese email" });
+
+        }
+        const fecha = new Date().toISOString().split('T')[0];
+        
+        const inicio = new Date(fechaInicio)
+        const fin = new Date(fechaFin)
+        const diferencia = fin.getTime() - inicio.getTime();
+        const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+        const horas = (diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60);
+        const duracion = dias === 0 ? `${horas.toFixed(2)} horas` : `${dias} días ${horas.toFixed(2)} horas`;
+        Solicitudes.create({
+            usuario_id: user.usuario_id,
+            fecha_solicitud: fecha,
+            revisado: false,
+            aprobado: false,
+            motivo: motivo,
+            comentarios: comment,
+            duracion
+        });
+        res.status(200).json({ message: "¡Solicitud realizada con éxito!" });
+    } catch (error) {
+        res.status(500).json({ message: "Error al crear la solicitud " });
+    }
+}
+
+const getPendingRequestsLength = async (req, res) => {
+    try {
+      const pendingRequests = await Solicitudes.findAll({
+        where: {
+          revisado: false
+        }
+      });
+      const length = pendingRequests.length;
+      res.status(200).json({ length });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Hubo un error al obtener las solicitudes pendientes' });
+    }
+  }
+
+
+
+
+
 module.exports = {
     createNewEmployee,
     getAllUsers,
     getUserData,
     updateEmployeeById,
     removeEmployee,
-    adminAuthCheck
+    adminAuthCheck,
+    getAllRequests,
+    getRequest,
+    allowRequest,
+    rejectRequest,
+    createRequest,
+    getPendingRequestsLength
 }
