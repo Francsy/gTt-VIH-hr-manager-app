@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import EmployeeHeader from './EmployeeHeader'
 import EmployeeMain from "./EmployeeMain";
 import { checkUserContext } from "../../context/checkUserContext";
@@ -12,8 +12,8 @@ const Employee = () => {
 
 
   const dispatch = useDispatch()
-  const [userName, setUserName ] = useState('')
-
+  const [userName, setUserName] = useState('')
+  const [userHours, setUserHours] = useState(0)
 
   const logout = async () => {
     await axios.get('/api/logout')
@@ -30,10 +30,10 @@ const Employee = () => {
         logout()
       } else if (message === 'isAuth') {
         setUserName(res.data.nombre)
-        console.log(res.data.nombre)
+        setUserHours(res.data.horasExtra)
       }
     } catch (error) {
-      logout()
+      console.log(error)
     }
   }
 
@@ -43,8 +43,9 @@ const Employee = () => {
   }, [])
 
   const data = {
-    userName
-  }  
+    userName,
+    userHours
+  }
 
 
   return <div>
