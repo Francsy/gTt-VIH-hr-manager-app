@@ -79,10 +79,10 @@ const AdminSideNavBar = () => {
         <img src={ClockIcon} alt="" />
         &nbsp;Horarios
       </Link>
-      <Link to="/admin">
+      <a href="https://informemensualgtt.nicepage.io/">
         <img src={EditIcon} alt="" />
         &nbsp;Informes
-      </Link>
+      </a>
       <Link to="/admin">
         <img src={ChecksIcon} alt="" />
         &nbsp;Permisos
