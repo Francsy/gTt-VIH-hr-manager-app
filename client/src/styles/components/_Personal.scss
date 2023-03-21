@@ -9,6 +9,10 @@
   background-color: #f6f5fa;
   border-radius: 20px;
   height: 80%;
+  
+  .icon-edit {
+    width: 100px;
+  }
 
   .personal-title{
     text-align: left;
@@ -52,6 +56,8 @@
     border-radius: 20px;
   }
 
+ 
+
   .personal-add-button {
     button {
       padding: 0.5rem;
@@ -92,3 +98,4 @@
     }
   }
 }
+

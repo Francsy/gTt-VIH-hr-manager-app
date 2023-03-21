@@ -60,7 +60,7 @@ const Personal = () => {
                   <Link
                     to={`/admin/personal/actualizar-empleado/${trabajador.usuario_id}`}
                   >
-                    <img src={IconEdit} alt="" />
+                    <img className="icon-edit" src={IconEdit} alt="" />
                   </Link>
                 </td>
               </tr>
