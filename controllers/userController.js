@@ -1,6 +1,7 @@
 const Usuarios = require('../schemas/usuarios')
 const Fichaje = require('../schemas/fichaje')
 const moment = require('moment');
+const Solicitudes = require('../schemas/solicitudes')
 
 
 
@@ -141,11 +142,45 @@ const endWorkingDay = async (req, res) => {
     }
 }
 
+const createWorkingDayRequest = async (req, res) => {
+    const { comment, extraHours } = req.body
+    const { email } = req.decoded;
+    const fecha = new Date().toISOString().split('T')[0];
+    try {
+        let user = await Usuarios.findOne({
+            attributes: ['usuario_id'],
+            where: { email: email }
+        })
+        const fichaje = await Fichaje.findOne({
+            where: {
+                usuario_id: user.usuario_id,
+                fecha,
+            },
+        });
+
+        const duracionHorasExtra = fichaje.horas_extra.toString() + " horas";
+        const duracionJornada = fichaje.horas_trabajadas.toString() + " horas"
+        Solicitudes.create({
+            usuario_id: user.usuario_id,
+            fecha_solicitud: fecha,
+            revisado: false,
+            aprobado: false,
+            motivo: extraHours ? "Horas extra" : "Otros",
+            comentarios: comment,
+            duracion: extraHours ? duracionHorasExtra : duracionJornada
+        });
+        res.status(200).json({ message: 'isSent' });
+    } catch (error) {
+        res.status(500).json({ message: 'Ha ocurrido un error al enviar solicitud' })
+    }
+}
+
 
 
 module.exports = {
     userAuthChecker,
     startWorkingDay,
     checkWorkingDay,
-    endWorkingDay
+    endWorkingDay,
+    createWorkingDayRequest
 }

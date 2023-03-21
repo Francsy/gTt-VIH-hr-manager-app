@@ -22,31 +22,35 @@ const Solicitudes = db.define('solicitudes', {
     }, 
     motivo: {
         type: DataTypes.STRING(20),
-        allowNull: true,
+        allowNull: false,
     }, 
     revisado: {
         type: DataTypes.BOOLEAN,
-        defaultValue: true
+        defaultValue: false
     }, 
     aprobado: {
         type: DataTypes.BOOLEAN,
-        defaultValue: true
+        defaultValue: false
     }, 
     fecha_inicio: {
         type: DataTypes.DATE,
-        allowNull: false,
+        allowNull: true,
     },
     fecha_fin: {
         type: DataTypes.DATE,
-        allowNull: false,
+        allowNull: true,
     },
     hora_inicio: {
         type: DataTypes.TIME,
-        allowNull: false,
+        allowNull: true,
     },
     hora_fin: {
         type: DataTypes.TIME,
-        allowNull: false,
+        allowNull: true,
+    },
+    duracion:{
+        type: DataTypes.STRING(20),
+        allowNull: true,
     },
     comentarios: {
         type: DataTypes.STRING(165),
@@ -60,4 +64,4 @@ const Solicitudes = db.define('solicitudes', {
 });
 
 Solicitudes.sync();
-module.exports = Gestiones;
+module.exports = Solicitudes;

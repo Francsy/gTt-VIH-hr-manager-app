@@ -9,6 +9,7 @@ const FichajeCard = () => {
   const [time, setTime] = useState('')
   const [ended, setEnded] = useState(false)
   const [isDisabled, setIsDisabled] = useState(false)
+  const [sent, setSent] = useState(false)
 
   const startWorking = async () => {
     try {
@@ -51,14 +52,28 @@ const FichajeCard = () => {
     }
   }
 
-  const createRequest = (e) => {
+  const createRequest = async (e) => {
     e.preventDefault()
     const comment = e.target.comment.value;
     const extraHours = e.target.extra.checked;
-    console.log(comment)
-    console.log(extraHours)
-  }
+    if (comment) {
+      try {
+        const res = await axios.post('/api/user/createclockrequest', {
+          comment,
+          extraHours
+        });
+        console.log(res.data)
+        if (res.data.message === 'isSent') {
+          setSent(true)
+        }
+      } catch (e) {
+        console.log(e)
+      }
+    } else {
+      alert('Introduce tu comentario')
+    }
 
+  }
   useEffect(() => {
     checkWorking()
   }, [])
@@ -73,15 +88,18 @@ const FichajeCard = () => {
       <h2>{time}</h2>
       <p>Jornada de hoy</p>
       {!ended ? (started ? <button onClick={endWorking}>Detener</button> : <button onClick={startWorking}>Comenzar</button>) :
-        <form onSubmit={createRequest}>
-          <label htmlFor="comment">Agregar comentario*</label>
-          <textarea name="comment" maxLength="165" />
-          <label>
-            <input name="extra" type="checkbox" disabled={isDisabled} />
-            Solicitar Hrs Extra
-          </label>
-          <input type="submit" />
-        </form>}
+        (sent ?
+          <p>'Solicitud registrada'</p> :
+          <form onSubmit={createRequest}>
+            <label htmlFor="comment">Agregar comentario*</label>
+            <textarea name="comment" maxLength="165" />
+            <label>
+              <input name="extra" type="checkbox" disabled={isDisabled} />
+              Solicitar Hrs Extra
+            </label>
+            <input type="submit" />
+          </form>)
+      }
     </div>
   </div>;
 };
