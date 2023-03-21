@@ -27,16 +27,16 @@ const Personal = () => {
 
   return (
     <div class="personal-container">
+      <h2 className="personal-title"> Personal </h2>
       <label class="search-label">
-        <BsSearch className="personal-icon"/>
+        <BsSearch className="personal-icon" />
         <div class="input-container">
           <input class="personal-search" type="text" placeholder="Buscar" />
           <Link to="/admin/personal/nuevo-empleado" class="personal-add-button">
-        <button>+ Añadir trabajador</button>
-      </Link>
+            <button>+ Añadir trabajador</button>
+          </Link>
         </div>
       </label>{" "}
-      
       {trabajadores.length > 0 ? (
         <table class="personal-table">
           <thead>
@@ -63,7 +63,6 @@ const Personal = () => {
                   >
                     <img src={IconEdit} alt="" />
                   </Link>
-                  
                 </td>
               </tr>
             ))}
