@@ -59,7 +59,7 @@ const AdminSideNavBar = () => {
         <img src={UsersIcon} alt="" />
         &nbsp;Personal
       </Link>
-      <Link to="/admin">
+      <Link to="/admin/solicitudes">
         <img src={InboxIcon} alt="" />
         &nbsp;Solicitudes
       </Link>
