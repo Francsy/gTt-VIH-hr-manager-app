@@ -18,7 +18,7 @@ const AdminAccesosCard = () => {
     <p>Personal</p>
   </Link>
 
-  <Link to="/admin">
+  <Link to="/admin/solicitudes">
     <img src={Inbox} alt="" />
     <p>Solicitudes</p>
   </Link>
