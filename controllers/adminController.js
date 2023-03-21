@@ -236,6 +236,21 @@ const createRequest = async (req, res) => {
     }
 }
 
+const getPendingRequestsLength = async (req, res) => {
+    try {
+      const pendingRequests = await Solicitudes.findAll({
+        where: {
+          revisado: false
+        }
+      });
+      const length = pendingRequests.length;
+      res.status(200).json({ length });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Hubo un error al obtener las solicitudes pendientes' });
+    }
+  }
+
 
 
 
@@ -251,5 +266,6 @@ module.exports = {
     getRequest,
     allowRequest,
     rejectRequest,
-    createRequest
+    createRequest,
+    getPendingRequestsLength
 }

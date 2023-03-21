@@ -13,4 +13,5 @@ adminRouter.get('/getrequest/:id', adminController.getRequest)
 adminRouter.get('/allowrequest/:id', adminController.allowRequest)
 adminRouter.get('/rejectrequest/:id', adminController.rejectRequest)
 adminRouter.post('/createrequest', adminController.createRequest)
+adminRouter.get('/pendingrequests', adminController.getPendingRequestsLength)
 module.exports = adminRouter;
