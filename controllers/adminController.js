@@ -83,7 +83,8 @@ const createNewEmployee = async (req, res) => {
             fecha_baja_contrato: fechaBaja || null,
             categoria,
             jornada_laboral: jornada,
-            rol: "empleado"
+            rol: "empleado",
+            horas_acumuladas: 0
         });
         res.status(201).json({ message: '¡Empleado creado con éxito!', employee: newEmployee });
 

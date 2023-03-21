@@ -1,4 +1,4 @@
-import React, {useState, useEffect}  from "react";
+import React, { useState, useEffect } from "react";
 import AdminHeader from "./AdminHeader";
 import AdminMain from "./AdminMain";
 
@@ -11,7 +11,7 @@ import axios from "axios";
 const Admin = () => {
 
   const dispatch = useDispatch()
-  const [adminName, setAdminName ] = useState('')
+  const [adminName, setAdminName] = useState('')
 
   const logout = async () => {
     try {
@@ -21,7 +21,7 @@ const Admin = () => {
       localStorage.removeItem('isAuth')
       localStorage.removeItem('isAdmin')
 
-    }catch (e){
+    } catch (e) {
       console.log(e)
     }
   }
@@ -36,7 +36,7 @@ const Admin = () => {
         setAdminName(res.data.nombre)
       }
     } catch (error) {
-      logout()
+      console.log(error)
     }
   }
 

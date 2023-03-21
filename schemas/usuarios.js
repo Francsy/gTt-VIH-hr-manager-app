@@ -64,16 +64,9 @@ const Usuarios = db.define('Usuarios', {
         field: 'rol',
         type: DataTypes.STRING(8),
         allowNull: false
-    },
-    estado: {
-        field: 'estado',
-        type: DataTypes.STRING(7),
-        allowNull: true
-    },
-    nueva_sesion: {
-        field: 'nueva_sesion',
-        type: DataTypes.DATE,
-        allowNull: true
+    }, horas_acumuladas: {
+        type: DataTypes.DECIMAL(5, 2),
+        allowNull: true,
     }
 },
     {
@@ -88,16 +81,16 @@ const Usuarios = db.define('Usuarios', {
 
 Usuarios.sync()
 
-/* 
 
-Usuarios.sync({ force: true })
-  .then(() => {
-    console.log('Usuarios model synchronized successfully');
-  })
-  .catch((error) => {
-    console.error('Error synchronizing Usuarios model:', error);
-  });
 
-*/
+// Usuarios.sync({ force: true })
+//   .then(() => {
+//     console.log('Usuarios model synchronized successfully');
+//   })
+//   .catch((error) => {
+//     console.error('Error synchronizing Usuarios model:', error);
+//   });
+
+
 
 module.exports = Usuarios
