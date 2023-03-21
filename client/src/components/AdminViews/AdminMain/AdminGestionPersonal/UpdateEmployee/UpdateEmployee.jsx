@@ -53,7 +53,7 @@ const UpdateEmployee = () => {
           navigate("/admin/personal");
         }, 2500);
       } catch (error) {
-        setMessage("Este usuario ya existe"); //A mejoorar desde el back para que la respuesta específica este mejorada
+        // setMessage("Este usuario ya existe"); //A mejoorar desde el back para que la respuesta específica este mejorada
       }
     } else {
       setMessage("Faltan algunos campos requeridos");

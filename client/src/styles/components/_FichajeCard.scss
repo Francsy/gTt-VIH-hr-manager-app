@@ -1,51 +1,76 @@
 .fichaje-card {
-    background-color: #ffffff;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    padding: 20px;
-    max-width: 300px;
-    width: 300px;
-  
-    h1 {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: #333;
-      margin-bottom: 15px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 20px;
+  max-width: 300px;
+  width: 350px;
+  height: 400px;
+
+  h1 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 10px;
+  }
+
+  p {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #333;
+    margin-bottom: 5px;
+  }
+  .form-horasExtra{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 20px;
+    
+  }
+  .textarea {
+    // padding: 10px;
+    // height: 100px;
+    width: 100%; // Cambia el ancho aquí
+  height: 100px; // Cambia la altura aquí
+  resize: vertical; 
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  }
+  .label-form {
+    padding: 10px;
+  }
+  .input-form {
+    padding: 10px;
+  }
+
+  .custom-button {
+    background-color: #D26538;
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 300;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    margin: 10px 0;
+    width: 80px;
+
+    &:focus {
+      outline: none;
     }
-  
-    h2 {
-      font-size: 1.5rem;
-      font-weight: 600;
-      color: #333;
-      margin-bottom: 10px;
-    }
-  
-    p {
-      font-size: 1rem;
-      font-weight: 400;
-      color: #333;
-      margin-bottom: 5px;
-    }
-  
-    button {
-      background-color: #007bff;
-      border: none;
-      border-radius: 5px;
-      color: #ffffff;
-      cursor: pointer;
-      font-size: 1rem;
-      font-weight: 600;
-      padding: 10px 20px;
-      text-align: center;
-      text-decoration: none;
-  
-      &:hover {
-        background-color: #0056b3;
-      }
-  
-      &:focus {
-        outline: none;
-      }
+
+    .custom-button{
+      background-color: #333;
+      color: white;
     }
   }
-  
+}
