@@ -99,7 +99,7 @@ const FichajeCard = () => {
             <textarea className="textarea" name="comment" maxLength="165" />
             <label>
               <input className="input-form" name="extra" type="checkbox" disabled={isDisabled} />
-              Solicitar
+              &nbsp;&nbsp;Solicitud de Horas extras
             </label>
             <input className="custom-button" type="submit" />
           </form>

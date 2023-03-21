@@ -3,6 +3,8 @@ import React, {useContext, useEffect, useState} from "react";
 import axios from 'axios';
 import BellRing from "../../../../../assets/bell-ring.svg";
 import { checkAdminContext } from "../../../../../context/checkAdminContext";
+import { Link } from 'react-router-dom';
+
 
 
 const MensajeCard = () => {
@@ -22,8 +24,10 @@ const MensajeCard = () => {
     <div className="card">
       <h1>Hola {adminName}!</h1>
       <div className="card-body">
-        <img src={BellRing} alt="" />
-        <p>Tienes ({pending}) solicitudes pendientes</p>
+        <Link to="/admin/solicitudes">
+          <img src={BellRing} alt="" />
+          <p>Tienes ({pending}) solicitudes pendientes</p>
+        </Link>
       </div>
     </div>
   );
