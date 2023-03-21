@@ -1,5 +1,7 @@
 const { db } = require('../utils/sqlConnection')
 const { DataTypes } = require('sequelize');
+const Usuarios = require('./usuarios');
+
 
 
 const Solicitudes = db.define('solicitudes', {
@@ -62,6 +64,8 @@ const Solicitudes = db.define('solicitudes', {
     tableName: 'solicitudes',
     timestamps: false,
 });
+
+Solicitudes.belongsTo(Usuarios, { foreignKey: 'usuario_id' });
 
 Solicitudes.sync();
 module.exports = Solicitudes;
