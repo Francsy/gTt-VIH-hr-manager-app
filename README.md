@@ -69,3 +69,13 @@ Se trata de una web app para la gestión de los empleados, su fichaje, las horas
 <br>
 
 <img src="client/src/assets/fichaje.png">
+
+<br>
+
+## Autores:
+
+
+
+- [Manuel Murillo](https://github.com/MMurilloP)
+
+- [Fran V. Hernández](https://github.com/Francsy/)
