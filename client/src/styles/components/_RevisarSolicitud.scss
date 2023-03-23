@@ -1,0 +1,74 @@
+.solicitud-details {
+    margin-top: 150px;
+    margin-left: 50px;
+    font-size: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 90%;
+    background-color: #f6f5fa;
+    border-radius: 20px;
+    padding: 40px;
+  
+    .solicitud-header {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      justify-content: flex-start;
+    }
+    
+    .arrow {
+      background-color: orange;
+      border: none;
+      border-radius: 15px;
+      padding: 5px;
+      color: white;
+      margin-right: 10px;
+    }
+  
+    .fisrt-lane {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      justify-content: flex-start;
+      
+      padding: 10px;
+      margin-bottom: 1rem;
+    }
+  
+    h3 {
+      font-weight: bold;
+      font-size: 20px;
+      margin-right: 20px;
+      margin-left: 20px;
+    }
+
+    p {
+        color: black;
+        padding: 10px;
+        border: 1px lightgray solid;
+        background-color: white;
+        border-radius: 15px;
+    }
+  
+    button {
+      padding: 0.5rem 1.5rem;
+      margin: 0.9rem;
+      border-radius: 20px;
+      width: auto;
+      border: none;
+      background-color: white;
+      color: black;
+      cursor: pointer;
+      transition: background-color 0.2s ease-in-out;
+      font-size: 1rem;
+      min-width: 120px;
+      text-align: center;
+    }
+    .button-container {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+      }
+  }
+  

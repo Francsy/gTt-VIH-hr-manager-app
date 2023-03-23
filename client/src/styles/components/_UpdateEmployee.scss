@@ -1,0 +1,106 @@
+.employee-container {
+  margin-top: 150px;
+  margin-left: 50px;
+  font-size: 15px;
+  display: flex;
+  padding: 40px;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  background-color: #f6f5fa;
+  border-radius: 20px;
+  height: 60%;
+
+  .employee-header {
+    display: flex;
+    align-items: center; // Alinea verticalmente los elementos
+    width: 100%;
+    justify-content: flex-start; // Alinea los elementos a la izquierda
+  }
+  .arrow {
+    background-color: orange;
+    border: none;
+    border-radius: 15px;
+    padding: 5px;
+    color: white;
+  }
+
+  .employee-title {
+    text-align: left;
+    margin-bottom: 1rem;
+    padding: 30px;
+  }
+
+  .employee-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    margin-bottom: 1rem;
+
+    .fisrt-lane {
+      display: flex;
+      padding: 15px;
+    }
+    label {
+      justify-content: center;
+      margin-bottom: 0.5rem;
+      padding-right: 10px;
+      padding-left: 10px;
+    }
+
+    input,
+    select {
+      padding: 9px; // Reduce el padding
+      border-radius: 20px; // Aumenta el border-radius
+      border: 1px solid #ccc;
+      margin-bottom: 1rem;
+      width: 100%;
+    }
+    .btn {
+      padding: 0.5rem 1.5rem; // Aumenta el padding horizontal
+      margin: 0.9rem;
+      border-radius: 20px;
+      width: auto;
+      border: none;
+      background-color: white;
+      color: black;
+      cursor: pointer;
+      transition: background-color 0.2s ease-in-out;
+      font-size: 1rem;
+      min-width: 120px; // Establece un ancho mínimo más grande
+      text-align: center;
+    }
+
+    .button-container {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+    }
+    .btn-guardar {
+      background-color: white;
+      color: black;
+    }
+    .btn-eliminar {
+      margin-left: 1rem;
+      background-color: #33403d;
+      color: white;
+    }
+  }
+
+  // .btn-guardar,
+  // .btn-eliminar {
+  //   padding: 0.5rem 1rem; // Aumenta el padding horizontal
+  //   margin: 0.9rem;
+  //   border-radius: 20px;
+  //   width: auto;
+  //   border: none;
+  //   background-color: white;
+  //   color: black;
+  //   cursor: pointer;
+  //   transition: background-color 0.2s ease-in-out;
+  //   font-size: 1rem; // Establece un tamaño de fuente
+  //   min-width: 100px; // Establece un ancho mínimo
+  //   text-align: center; // Alinea el texto al centro
+  // }
+}

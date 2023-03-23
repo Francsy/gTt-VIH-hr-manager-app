@@ -1,0 +1,80 @@
+// .sidenavbar {
+//     width: 250px;
+//     background-color: white;
+//     overflow-x: hidden;
+//     padding: 20px;
+//     transition: width 0.3s;
+//     border-radius: 0px 40px 40px 0px; // Puedes cambiar este valor si deseas ajustar el borde redondeado del sidenavbar
+  
+//     a {
+//       display: flex;
+//       align-items: center;
+//       text-decoration: none;
+//       color: #333;
+//       padding: 10px 0;
+  
+//       img {
+//         margin-right: 30px;
+//         width: 50px;
+//         height: 40px;
+//         border-radius: 0; 
+//       }
+//     }
+  
+//     .logo-img {
+//       width: 90px;
+//       height: 90px;
+//       margin: 0px;
+//       border-radius: 0;
+//       transition: all 0.3s;
+  
+//       &.closed {
+//         width: 50px;
+//         height: 50px;
+//       }
+//     }
+//     .open {
+//     width: 200px; // Ajusta el ancho del sidenavbar cuando está abierto
+//   }
+  
+//   .closed {
+//     width: 50px; // Ajusta el ancho del sidenavbar cuando está cerrado
+//   }
+  
+//   .toggle-nav-button {
+//     background-color: transparent;
+//     border: none;
+//     font-size: 1.5rem;
+//     cursor: pointer;
+  
+//     &:focus {
+//       outline: none;
+//     }
+//   }
+  
+//   .logout-button {
+//     background-color: transparent;
+//     border: none;
+//     font-size: 1em;
+//     color: #333;
+//     display: flex;
+//     align-items: center;
+//     text-decoration: none;
+//     padding: 10px 0;
+//     cursor: pointer;
+    
+//     img {
+//       margin-right: 30px;
+//       width: 50px;
+//       height: 40px;
+//       border-radius: 0;
+//     }
+    
+//     &:hover {
+//       background-color: #f5f5f5;
+//     }
+//   }
+//   }
+  
+  
+  

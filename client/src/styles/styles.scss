@@ -1,0 +1,36 @@
+@import './views/App';
+@import './elements/Icon-sidenavar';
+
+
+
+//USER COMPONENTS
+@import './components/Login';
+@import './components/EmployeeHeader';
+@import './components/EmployeeSideNavBar';
+@import './components/EmployeeMain';
+@import './components/InfoCard';
+@import './components/FichajeCard';
+@import './components/EmployeeEventsCard';
+@import './components/EmployeeAccesosCard';
+@import './components/EmployeeDashboard';
+
+//ADMIN COMPONENTS
+@import './components/AdminHeader';
+@import './components/ViewsSelector';
+@import './components/AdminSideNavBar';
+@import './components/AdminMain';
+@import './components/AdminAccesosCard';
+@import './components/AusenciasCard';
+@import './components/MensajeCard';
+@import './components/AdminDashboard';
+
+//Personal
+@import './components/Personal';
+
+//Gestion de personal
+@import './components/UpdateEmployee';
+
+//solicitudes desde admin
+@import './components/Solicitudes';
+@import './components/CrearSolicitud';
+@import './components/RevisarSolicitud';

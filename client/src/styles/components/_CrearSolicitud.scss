@@ -1,0 +1,94 @@
+.solicitud-container {
+    margin-top: 150px;
+    margin-left: 50px;
+    font-size: 15px;
+    display: flex;
+    padding: 50px;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    background-color: #f6f5fa;
+    border-radius: 20px;
+    height: 60%;
+  
+    .solicitud-header {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      justify-content: flex-start;
+    }
+  
+    .arrow {
+      background-color: orange;
+      width: 45px;
+      height: 45px;
+      border: none;
+      border-radius: 15px;
+      padding: 5px;
+      margin-right: 20px;
+      color: white;
+    }
+
+    .textarea-solicitud {
+        height: 100px; /* Ajusta la altura según lo desees */
+        resize: vertical; /* Permite redimensionar el textarea solo verticalmente */
+      }
+  
+  
+    .solicitud-form {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      width: 100%;
+      margin-bottom: 1rem;
+      padding: 40px;
+  
+      .fisrt-lane {
+        display: flex;
+        padding: 5px;
+      }
+      .second-lane {
+        display: flex;
+        padding: 10px;
+        
+      }
+  
+      label {
+        justify-content: center;
+        margin-bottom: 0.5rem;
+        padding-right: 10px;
+        padding-left: 10px;
+      }
+  
+      input,
+      select,
+      textarea {
+        padding: 9px;
+        border-radius: 20px;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+        width: 100%;
+      }
+      .button-container {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+      }
+  
+      .submit-btn {
+        padding: 0.5rem 1.5rem;
+        margin: 0.9rem;
+        border-radius: 20px;
+        width: auto;
+        border: none;
+        background-color: white;
+        color: black;
+        cursor: pointer;
+        transition: background-color 0.2s ease-in-out;
+        font-size: 1rem;
+        min-width: 120px;
+        text-align: center;
+      }
+    }
+  }
+  

@@ -1,0 +1,43 @@
+.admin-accesos-card {
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 20px;
+  max-width: 400px;
+  width: 300px;
+
+  h1 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+  }
+
+  .admin-accesos-items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      color: #333;
+      width: 48%; // Añadir ancho del 48% para que los elementos estén en dos columnas
+      margin-bottom: 10px;
+
+      img {
+        width: 30px;
+        height: 30px;
+        margin-bottom: 5px;
+      }
+
+      p {
+        font-size: 1rem;
+        font-weight: 400;
+        margin: 0;
+      }
+    }
+  }
+}
