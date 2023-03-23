@@ -8,22 +8,22 @@ Se trata de una web app para la gestión de los empleados, su fichaje, las horas
 
 ## Realizada con el STACK PERN:
 
-PostgresSQL
-Express
-ReactJS
-Node.js
+- PostgresSQL
+- Express
+- ReactJS
+- Node.js
 
 <br>
 
 ## Otras tecnologías utilizadas:
 
-Sequelize ORM
-Json Web Token
-Bcrypt
-React Router Dom
-Context
-Nuevo enfoque de Redux (New Redux Approach)
-SASS
+- Sequelize ORM
+- Json Web Token
+- Bcrypt
+- React Router Dom
+- Context
+- Nuevo enfoque de Redux (New Redux Approach)
+- SASS
 
 <br>
 
