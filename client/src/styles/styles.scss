@@ -25,4 +25,12 @@
 @import './components/AdminDashboard';
 
 //Personal
-@import './components/Personal'
+@import './components/Personal';
+
+//Gestion de personal
+@import './components/UpdateEmployee';
+
+//solicitudes desde admin
+@import './components/Solicitudes';
+@import './components/CrearSolicitud';
+@import './components/RevisarSolicitud';

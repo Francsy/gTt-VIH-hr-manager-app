@@ -32,11 +32,10 @@ const Personal = () => {
         <div className="input-container">
           <input className="personal-search" type="text" placeholder="Buscar" />
           <Link to="/admin/personal/nuevo-empleado" class="personal-add-button">
-        <button>+ Añadir trabajador</button>
-      </Link>
+            <button>+ Añadir trabajador</button>
+          </Link>
         </div>
       </label>{" "}
-      
       {trabajadores.length > 0 ? (
         <table className="personal-table">
           <thead>
@@ -61,9 +60,8 @@ const Personal = () => {
                   <Link
                     to={`/admin/personal/actualizar-empleado/${trabajador.usuario_id}`}
                   >
-                    <img src={IconEdit} alt="" />
+                    <img className="icon-edit" src={IconEdit} alt="" />
                   </Link>
-                  
                 </td>
               </tr>
             ))}

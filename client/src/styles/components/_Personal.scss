@@ -8,8 +8,16 @@
   width: 150%;
   background-color: #f6f5fa;
   border-radius: 20px;
-  height: 80%;
+  height: 90%;
+  
+  .icon-edit {
+    width: 100px;
+  }
 
+  .personal-title{
+    text-align: left;
+  }
+ 
   .personal-search {
     padding: 0.5rem;
     border-radius: 0.25rem;
@@ -47,6 +55,8 @@
     width: 90%;
     border-radius: 20px;
   }
+
+ 
 
   .personal-add-button {
     button {
@@ -88,3 +98,4 @@
     }
   }
 }
+
